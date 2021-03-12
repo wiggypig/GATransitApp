@@ -2,30 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>Nearby Buses</title>
-    <!-- Meta tags -->
-    <meta charset="utf-8" />
-    <meta
-            name="viewport"
-            content="width=device-width,
-      initial-scale=1, user-scalable=no"
-    />
-    <!-- Bootstrap CSS -->
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-            crossorigin="anonymous"
-    />
-    <!-- Bootstrap Bundle with Popper -->
-    <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"
-    ></script>
-    <!-- Local CSS -->
-    <link rel="stylesheet" type="text/css" href="/custom.css" />
-
+    <head th:replace="fragments/template :: head(title='Nearby Buses')"></head>
 
 </head>
 <body>
@@ -35,12 +12,11 @@
 
 <section>
     <article>
-        <div class="col" style="height: 100%; width: 100%;">
-            <h2>Map</h2>
+        <div class="col">
+
             <!--
               Everything needed to render the map is below.
             -->
-
             <div id="map"></div>
             <div th:if="${buses != null and buses.size() > 0}">
                 <script th:inline="javascript">
@@ -49,13 +25,14 @@
                       /*]]>*/
                 </script>
             </div>
-
-
         </div>
     </article>
 
     <article>
         <h2 class="text-center">Find Buses</h2>
+        <!--
+             Form to handle the input for finding nearby buses
+        -->
 
         <form
                 th:action="@{/buses}"
@@ -95,8 +72,8 @@
         <br/>
 
         <!--
-          After that, if our list of buses isn't null, we display a table that shows all the nearby buses below the form.
-          -->
+            If the list of buses isn't empty, display a table that shows the nearby buses.
+        -->
         <div class="row" th:if="${buses != null and buses.size() > 0}">
             <table class="table table-striped">
                 <tr>
@@ -117,8 +94,8 @@
 
         <div class="container-fluid">
             <!--
-         Finally, if there are no nearby buses, we display a message:
-         -->
+                If there are no nearby buses, display a notification message:
+            -->
             <div class="text-center" th:if="${buses != null and buses.size() == 0}">
                 <h3>Sorry, there are no nearby buses.</h3>
             </div>
@@ -126,10 +103,6 @@
     </article>
 </section>
 
-
-<script src="assets/js/jquery.min.js"></script>
-<script th:inline="javascript" src="/custom.js"></script>
-<script th:src="@{${'https://maps.googleapis.com/maps/api/js?key=' + @environment.getProperty('google_api_key') + '&callback=initMap'}}" async defer></script>
-
+<span th:replace="fragments/template :: footer-scripts"></span>
 </body>
 </html>
