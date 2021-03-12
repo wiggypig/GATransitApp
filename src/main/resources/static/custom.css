@@ -1,9 +1,58 @@
 
-#map {
-    height: 75%;
-}
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+    #map {
+        height: 95%;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+      body {
+        margin: 0;
+      }
+
+      header {
+        background: purple;
+        height: 100px;
+      }
+
+      h1 {
+        text-align: center;
+        color: white;
+        line-height: 100px;
+        margin: 0;
+      }
+
+      /* Favorite flexbox CSS below here */
+      section {
+        display: flex;
+        flex-direction: row;
+      }
+
+      article {
+        padding: 10px;
+        margin: 10px;
+        background: lightyellow;
+      }
+
+      article:nth-of-type(1) {
+        flex: 3 300px;
+        display: flex;
+        flex-flow: column;
+      }
+      article:nth-of-type(2) div:first-child {
+        flex: 1 100px;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .btn, .btn-md, .btn-primary, .btn-block {
+		    align-self: center;
+		    width: 50%;
+		    background-color: purple;
+      }
