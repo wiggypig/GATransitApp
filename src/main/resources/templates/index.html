@@ -114,18 +114,18 @@
     -->
 
     <div id="map"></div>
-
     <div th:if="${buses != null and buses.size() > 0}">
         <script th:inline="javascript">
               /*<![CDATA[*/
                 var busLocations = /*[[${buses}]]*/
               /*]]>*/
-              </script>
+        </script>
     </div>
     <script th:inline="javascript" src="/custom.js"></script>
     <script th:src="@{${'https://maps.googleapis.com/maps/api/js?key='
     + @environment.getProperty('google_api_key') + '&callback=initMap'}}"
-            async defer> </script>
+    async defer>
+    </script>
 </div>
 
 <!--<script src="assets/js/breakpoints.min.js"></script>-->
