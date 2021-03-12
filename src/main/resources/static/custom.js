@@ -30,7 +30,7 @@ function initMap() {
             });
 
             let busNum = busLocations[i].VEHICLE;
-            let contentString = '<h4> Bus#:' + busNum + '</h4>';
+            let contentString = '<h4> Bus#: ' + busNum + '</h4>';
             let infowindow = new google.maps.InfoWindow({
                 content: contentString
             })
